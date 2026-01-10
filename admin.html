@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VacciCare+ | Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="admin">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">VacciCare+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin.html">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hospital.html">Hospital</a></li>
+                    <li class="nav-item"><a class="nav-link" href="parent.html">Parent</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-primary text-white py-4">
+        <div class="container text-center">
+            <h2 class="fw-bold">Admin Portal</h2>
+        </div>
+    </header>
+
+    <main class="container py-4">
+        <div id="adminLoginSection" class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Admin Login</h5>
+                        <form id="adminLoginForm" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" id="adminUsername" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" id="adminPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <div class="form-text">Default: admin / admin123</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="adminDashboard" class="d-none">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Dashboard</h4>
+                <button id="adminLogout" class="btn btn-outline-danger btn-sm">Logout</button>
+            </div>
+            <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabChildren" type="button">Children</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabAppointments" type="button">Appointments</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabHospitals" type="button">Hospitals</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabFeedback" type="button">Feedback</button></li>
+            </ul>
+            <div class="tab-content py-3">
+                <div class="tab-pane fade show active" id="tabChildren">
+                    <div class="d-flex justify-content-end mb-2">
+                        <button class="btn btn-sm btn-success" id="exportChildrenCsv">Export CSV</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="adminChildrenTable">
+                            <thead class="table-primary"><tr><th>ID</th><th>Name</th><th>Parent</th><th>DOB</th><th>Vaccines</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tabAppointments">
+                    <div class="d-flex justify-content-end mb-2">
+                        <button class="btn btn-sm btn-success" id="exportAppointmentsCsv">Export CSV</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="adminAppointmentsTable">
+                            <thead class="table-primary"><tr><th>ID</th><th>Child</th><th>Parent</th><th>Hospital</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tabHospitals">
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="adminHospitalsTable">
+                            <thead class="table-primary"><tr><th>ID</th><th>Name</th><th>Email</th><th>Approved</th><th>Action</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tabFeedback">
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="adminFeedbackTable">
+                            <thead class="table-primary"><tr><th>Name</th><th>Contact</th><th>Rating</th><th>Comments</th><th>Date</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-white border-top">
+        <div class="container d-flex justify-content-between">
+            <span class="text-muted">© <span id="year"></span> VacciCare+</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
+
